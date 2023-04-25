@@ -4,20 +4,8 @@
     {
       "type": "shell",
       "label": "Build",
-      "command": "/usr/bin/clang++",
-      "args": [
-        "-std=c++17",
-        "-stdlib=libc++",
-        "-g",
-        "helloworld.cpp",
-        "-o",
-        "${workspaceFolder}/build/helloworld",
-        "-arch",
-        "x86_64",
-        "-lsfml-graphics",
-        "-lsfml-window",
-        "-lsfml-system"
-      ],
+      "command": "cmake",
+      "args": ["-S", "${workspaceFolder}", "-B", "${workspaceFolder}/build"],
       "options": {
         "cwd": "${workspaceFolder}"
       },
@@ -26,8 +14,20 @@
     },
     {
       "type": "shell",
+      "label": "Make",
+      "command": "make",
+      "args": ["-C", "${workspaceFolder}/build"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": ["$gcc"],
+      "dependsOn": ["Build"],
+      "group": "build"
+    },
+    {
+      "type": "shell",
       "label": "Run",
-      "command": "${workspaceFolder}/build/helloworld",
+      "command": "${workspaceFolder}/build/HelloWorld",
       "args": [],
       "options": {
         "cwd": "${workspaceFolder}"
@@ -38,7 +38,7 @@
         "clear": true
       },
       "problemMatcher": [],
-      "dependsOn": ["Build"],
+      "dependsOn": ["Make"],
       "group": {
         "kind": "build",
         "isDefault": true
