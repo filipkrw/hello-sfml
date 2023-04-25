@@ -11,7 +11,12 @@
         "-g",
         "helloworld.cpp",
         "-o",
-        "${workspaceFolder}/build/helloworld"
+        "${workspaceFolder}/build/helloworld",
+        "-arch",
+        "x86_64",
+        "-lsfml-graphics",
+        "-lsfml-window",
+        "-lsfml-system"
       ],
       "options": {
         "cwd": "${workspaceFolder}"

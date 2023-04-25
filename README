@@ -1,0 +1,5 @@
+Install SFML with `homebrew`:
+
+```bash
+brew install sfml
+```

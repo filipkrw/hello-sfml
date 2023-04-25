@@ -1,16 +1,23 @@
-#include <iostream>
-#include <vector>
-#include <string>
-
-using namespace std;
+#include <SFML/Graphics.hpp>
 
 int main()
 {
-    vector<string> msg {"Hello", "there", "world"};
+    sf::RenderWindow window(sf::VideoMode(1600, 1200), "SFML window");
 
-    for (const string& word : msg)
+    while (window.isOpen())
     {
-        cout << word << " ";
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+            }
+        }
+
+        window.clear(sf::Color::Black);
+        window.display();
     }
-    cout << endl;
+
+    return 0;
 }
